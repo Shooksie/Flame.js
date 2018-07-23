@@ -97,7 +97,7 @@ export class Button extends Base {
     const type="button";
     super(type);
     this._dom.style.textCss = 'flex: 1, background-color: blue;'
-    this._dom.innerHTML = 'click me bitch'
+    this._dom.innerHTML = 'click me'
   }
 
   onClick(handler) {
