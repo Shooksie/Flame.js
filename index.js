@@ -1,2 +1,1 @@
-export * from './components';
-export * from './spark.js'
+export * from './lib';

@@ -1,0 +1,25 @@
+{
+  "name": "flame.js",
+  "version": "0.0.2",
+  "description": "Javascript Framework for Rapid App devlopment",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shooksie/Flame.js.git"
+  },
+  "keywords": [
+    "Javascript"
+  ],
+  "author": "Sami Shukri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shooksie/Flame.js/issues"
+  },
+  "homepage": "https://github.com/Shooksie/Flame.js#readme"
+}
