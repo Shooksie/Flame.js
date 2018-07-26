@@ -1,6 +1,5 @@
 import { flame } from '../lib';
 import Main from './Views/testviews';
-import './styles.css';
 
 
 function component() {

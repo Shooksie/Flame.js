@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "test",
+    "bundle": "babel lib --out-file bundle.js && babel bundle.js --presets minify",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
     "server": "node server.js",
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/Shooksie/Flame.js#readme",
   "devDependencies": {
+    "babel-preset-minify": "^0.4.3",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "express": "^4.16.3",
