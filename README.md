@@ -1,6 +1,6 @@
 # flame.js
 A Javascript Framework for rapid web apps.
-flame.js is a component based javascript framework that uses a fragmentation model. It handles all dom insertions using a (DocumentFragment)[https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment]. 
+flame.js is a component based javascript framework that uses a fragmentation model. It handles all dom insertions using a [DocumentFragment](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment). 
 
 What makes flame.js different is we don't want to replace the dom, but we want to empower you as the developer to gain better control of the dom. This is achieved because every Component you create has a direct pointer to itself in the dom. 
 
