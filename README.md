@@ -13,27 +13,7 @@ What makes flame.js different is we don't want to replace the dom, but we want t
 ***
 
 ### How to use in your app
-entry file for me I am using a webpack index.js
-```
-import { flame } from 'flame';
-import Main from './{your javascript file path here}';
 
-
-function component() {
-  const c = flame('body', Main);
-}
-
-let element = component(); // Store the element to re-render on print.js changes
-if (module.hot) {
-  module.hot.accept('../lib', () => {
-     document.body.innerHTML = '';
-    element = component(); // Re-render the "component" to update the click handler
-  });
-}
-
-
-
-```
 in a js file of your choice
 ```javascript
 // es6 example
@@ -134,7 +114,7 @@ I am using webpack to bundle my code up, but feel free to choose any alternative
 _index.js file_
 ```javascript
 import { flame } from 'flame';
-import Main from './Views/testviews';
+import Main from './{your file path here}';
 
 
 function component() {
@@ -142,7 +122,7 @@ function component() {
   // in my case I picked the body because I'm rendering a completely blank html file with webpack
   // but if you want to create a default template and want flame to manage a small section you can
   
-  return (new flame('body',Main));
+  return flame('body',Main));
 }
 
 ```
