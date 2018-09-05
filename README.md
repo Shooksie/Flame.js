@@ -13,27 +13,66 @@ What makes flame.js different is we don't want to replace the dom, but we want t
 ***
 
 ### How to use in your app
+entry file for me I am using a webpack index.js
+```
+import { flame } from 'flame';
+import Main from './{your javascript file path here}';
 
+
+function component() {
+  const c = flame('body', Main);
+}
+
+let element = component(); // Store the element to re-render on print.js changes
+if (module.hot) {
+  module.hot.accept('../lib', () => {
+     document.body.innerHTML = '';
+    element = component(); // Re-render the "component" to update the click handler
+  });
+}
+
+
+
+```
 in a js file of your choice
 ```javascript
 // es6 example
 
-import { Component, Text, Div, Button } from 'flame';
-
+import {
+  Component,
+  p,
+  h1,
+  Div,
+  Button,
+  Row,
+} from 'flame';
 
 const Styles = {
   MainDiv: {
     textAlign: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row'
+    flex: 1,
+  },
+  Row: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    border: '1px solid',
+    flexDirection: 'row',
+    flex: 1,
   },
   DivOne: {
     textAlign: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
+    alignItems: 'center',
+    border: '1px solid',
+    paddingBottom: '1%',
+    flex: 1,
+  },
+  FullHeight: {
+    height: '100%',
+    flex: 1,
+  },
+};
 
 
 class ButtonView extends Component {
@@ -41,45 +80,52 @@ class ButtonView extends Component {
     super();
     this.args = args;
   }
+
   render() {
-      const { valueOne, valueTwo} = this.args;
-      const ButtonValue= new Button();
-      const TextValue = new Text();
+    const { valueOne, valueTwo } = this.args;
+    const ButtonValue = Button();
+    const TextValue = h1();
+    TextValue.setValue(valueOne);
+    ButtonValue.onClick(() => {
+      if (TextValue._getDom().innerText === valueOne) {
+        TextValue.setValue(valueTwo);
+      } else {
+        TextValue.setValue(valueOne);
+      }
+    });
 
-      TextValue.setValue(valueOne);
-      ButtonValue.onClick(()=> {
-        if(TextValue._getDom().innerText === valueOne) {
-          TextValue.setValue(valueTwo);
-        }
-        else {
-          TextValue.setValue(valueOne);
-        }
-      });
-
-      return (new Div({
-          children: [TextValue, ButtonValue],
-          style: Styles.DivOne
-        })
-      );
+    return (Div({
+      children: [TextValue, ButtonValue],
+      style: Styles.DivOne,
+    })
+    );
   }
 }
 
+
 export default class Main extends Component {
-  constructor() {
-    super();
-  }
   render() {
-    const ButtonView1 = new ButtonView({valueOne: 'whatup', valueTwo: 'no way'});
-    const ButtonView2 = new ButtonView({valueOne: 'hey man', valueTwo: 'whatup'});
-    return (new Div({
-        children: [
-          ButtonView1, ButtonView2
-        ],
-        style: Styles.MainDiv
-      })
+    const view = {
+      button1: (new ButtonView({ valueOne: 'whatup', valueTwo: 'no way' })),
+      button2: (new ButtonView({ valueOne: 'hey man', valueTwo: 'whatup' })),
+    };
+    return (Div({
+      children: [
+        (Row({
+          children: [view.button1, view.button2, view.button1, view.button2],
+        })),
+        (Row({
+          children: [view.button1, view.button2],
+        })),
+        (Row({
+          children: [view.button1, view.button2, view.button1],
+        })),
+      ],
+      style: Styles.MainDiv,
+    })
     );
   }
-};
+}
 
 ```
 
