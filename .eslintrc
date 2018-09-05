@@ -1,0 +1,8 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "func-names": ["error", "never"],
+    "react/no-multi-comp": [<disabled>, { "ignoreStateless": <boolean> }],
+    "no-underscore-dangle": [0]
+  }
+}

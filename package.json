@@ -1,12 +1,13 @@
 {
   "name": "flame.js",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Javascript Framework for Rapid App devlopment",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "test": "test",
     "bundle": "babel lib --out-file bundle.js && babel bundle.js --presets minify",
     "watch": "webpack --watch",
@@ -28,9 +29,14 @@
   },
   "homepage": "https://github.com/Shooksie/Flame.js#readme",
   "devDependencies": {
-    "babel-preset-minify": "^0.4.3",
+    "babel-eslint": "^8.2.6",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.21.0",
